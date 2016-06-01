@@ -67,7 +67,12 @@ footer {
     }else{
 ?>
 <div class="form">
-<h1>Registro</h1>
+<h1>
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x" style="color:cornflowerblue"></i>
+        <i class="fa fa-users fa-stack-1x" style="color:white"></i>
+    </span>
+    Registro</h1>
 
 <form name="registration" action="" method="post">
     <div class="input-group margin-bottom-sm">

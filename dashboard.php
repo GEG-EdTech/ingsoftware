@@ -446,13 +446,21 @@ input[name="controls"] {display: none;}
 
 <!--Permitir agregar notas al ramo-->
     <br>
-    <h4>Ingresar Nueva Nota</h4>
-    <form method="POST" action="agregarnota.php">
-    Nota: <input type="text" name="notaramo"><br>
-    Ponderacion: <input type="text" name="pondnota"><br>
-    <input type="hidden" name="ramo" value="<?php echo $nombreRamo; ?>">
-    <input type="submit" value="Guardar">
-    </form><br>
+    <?php
+    $query = "SELECT ponderacion FROM nota WHERE ramo_users_id='$id' and ramo_id_ramo='$idRamo'";
+    $resultNota = mysql_query($query);
+    while($row = mysql_fetch_array($resultNota)){ 
+        $sumaPonderacion = $sumaPonderacion + $row['ponderacion'];
+    }
+    if ($sumaPonderacion < 1){ ?>
+        <h4>Ingresar Nueva Nota</h4>
+        <form method="POST" action="agregarnota.php">
+        Nota: <input type="text" name="notaramo"><br>
+        Ponderacion: <input type="text" name="pondnota"><br>
+        <input type="hidden" name="ramo" value="<?php echo $nombreRamo; ?>">
+        <input type="submit" value="Guardar">
+        </form><br>
+    <?php } ?>
 <!--Elimina al ramo del alumno-->
     <h4>¿Desea eliminar este ramo?</h4>
     <form method="POST" action="eliminarramo.php">
@@ -465,7 +473,7 @@ input[name="controls"] {display: none;}
 <aside>
     <!--Calendario-->
     <div>
-        <iframe src="http://localhost/ingsoftware/calendario.php" width="41%" height="580" frameBorder="0" scrolling="no">
+        <iframe src="http://localhost/ingsoftware/calendario.php" width="41%" height="570" frameBorder="0" scrolling="no">
         </iframe>
     </div>
     
@@ -524,8 +532,7 @@ input[name="controls"] {display: none;}
 
 
 <footer>
-        
-    <span class="fa-stack fa-lg">
+<span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x" style="color:purple"></i>
             <i class="fa fa-area-chart fa-stack-1x" style="color:white"></i>
         </span>
