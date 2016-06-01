@@ -25,6 +25,4 @@ $resultat = $bdd->query($requete) or die(print_r($bdd->errorInfo()));
 
 // envia resultado encodeado al succes del ajax
 echo json_encode($resultat->fetchAll(PDO::FETCH_ASSOC));
-
-
 ?>

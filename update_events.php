@@ -25,7 +25,7 @@ try {
     exit('Unable to connect to database.');
 }
 // actualizar db
-$sql = "UPDATE fecha SET title=?, start=?, end=? WHERE id_fecha=? AND users_id='$id_u'";
+$sql = "UPDATE fecha SET title=?, start=?, end=? WHERE users_id=? AND id_fecha=?";
 $q = $bdd->prepare($sql);
-$q->execute(array($title, $start, $end, $id));
+$q->execute(array($title, $start, $end, $id_u, $id));
 ?>

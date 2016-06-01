@@ -42,10 +42,7 @@
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				var date = new Date();
-				var d = date.getDate();
-				var m = date.getMonth();
-				var y = date.getFullYear();
+				
 				//config de notificaciones
 				toastr.options = {
 					"closeButton" : false,
@@ -139,7 +136,7 @@
 														$("#title").val("");
 														$("#description").val("");
 														obj = JSON.parse(json);
-														id=obj[0].id;
+														id=obj[0].id_fecha;
 														
 														calendar.fullCalendar('renderEvent', {
 															id:id,
@@ -177,7 +174,6 @@
 							},
 							//acciones al hacer click en un evento
 							eventClick : function(event, jsEvent, view) {
-								alert(event.id);
 								$("#delete span").text("Eliminar: " + event.title);
 								$("#selectContent").dialog({
 									modal : true

@@ -15,7 +15,7 @@ while ($fila = mysql_fetch_assoc($resultId)) {
 $json = array();
 
 // query para pedir los eventos
-$requete = "SELECT * FROM fecha WHERE users_id='$id_u' ORDER BY id_fecha";
+$requete = "SELECT title,start,end,color,id_fecha AS id, description,allDay FROM fecha WHERE users_id='$id_u' ORDER BY id_fecha";
 
 // conexion a la db
 try {

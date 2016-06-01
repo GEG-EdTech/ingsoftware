@@ -32,6 +32,7 @@ try {
 catch (PDOException $e) {
     echo $sql . "<br>" . $e->getMessage();
 }
+
 //enviar encodeado en json valor de id, para resolver bug de eliminar evento creado
 try {
     $sql2 = "SELECT id_fecha FROM fecha WHERE title='$title' AND users_id='$id_u' AND color='$color'";
