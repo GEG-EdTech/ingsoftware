@@ -12,6 +12,7 @@ include("notificacion.php")  //verifica si debe mandar algun mail a los usuarios
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="jquery-ui.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/5ab0d2bdb4.js"></script>
 <style>
 header {
     background-color:black;
@@ -22,7 +23,7 @@ header {
 nav {
     line-height:30px;
     background-color:#eeeeee;
-    height:300px;
+    height:340px;
     width:230px;
     float:left;
     padding:5px;	      
@@ -153,6 +154,7 @@ input[name="controls"] {display: none;}
 </style>
 
 </head>
+
 <body>
 
 <header>
@@ -160,8 +162,9 @@ input[name="controls"] {display: none;}
 
 <nav>
     <!-- Cerrar cuenta -->
-    <a href="logout.php">Cerrar Sesión</a>
-    <br>
+    <a class="btn btn-danger" href="logout.php">
+        <i class="fa fa-user-times fa-lg"></i> Cerrar Sesión</a>
+    <br><br>
     <!--Mostrar todos los ramos del alumno-->
     <form method="POST" action="dashboard.php">
         <?php
@@ -205,20 +208,28 @@ input[name="controls"] {display: none;}
         </form><br>
     
     <!--Ingresar nuevo ramo a la BBDD del alumno-->
-    <h3>Ingresar Nuevo Ramo</h3>
+    <h4>Ingresar Nuevo Ramo</h4>
     <form method="POST" action="agregarramo.php">
     Nombre Ramo: <input type="text" name="nombreramo"><br>
     <input type="submit" value="Guardar">
     </form>
-
 </nav>
 
 <section>
-    <h1>Bienvenido <?php echo $_SESSION['username']; ?>!</h1><br>
+    <br><h1>
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x" style="color:orange"></i>
+        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+    </span>
+        Bienvenido <?php echo $_SESSION['username']; ?>!</h1><br>
     <!--Se muestra el promedio general del alumno-->
-    <h3>Promedio general</h3><br>
     
+    <h3>Promedio general</h3><br>
     <h4>Promedio real: </h4>
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x" style="color:orange"></i>
+        <i class="fa fa-graduation-cap fa-stack-1x" style="color:white"></i>
+    </span> 
     <?php
     //se busca en la BBDD cada nota con su respectiva ponderacion.
     $query = "SELECT nota, ponderacion FROM nota WHERE ramo_users_id='$id'";
@@ -250,24 +261,24 @@ input[name="controls"] {display: none;}
     <!--Nota que espero sacarme como promedio general-->
     
     
-    
-    
-    
-    
-    
-    
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </section>
  
 <aside>
     <!--Calendario-->
     <div>
-        <iframe src="http://localhost/ingsoftware/calendario.php" width="41%" height="500" frameBorder="0" scrolling="no">
+        <iframe src="http://localhost/ingsoftware/calendario.php" width="41%" height="580" frameBorder="0" scrolling="no">
         </iframe>
     </div>
     
     <!--Tiempo de estudio-->
-    <div style="position:relative;left:150px"><br><br>
+    <h2>
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x" style="color:blue"></i>
+            <i class="fa fa-clock-o fa-stack-1x" style="color:white"></i>
+        </span>
+        Temporizador</h2>
+    <div style="position:relative;left:0px"><br><br>
     <input id="start" name="controls" type="radio" />
     <input id="stop" name="controls" type="radio" />
     <input id="reset" name="controls" type="radio" />
@@ -304,7 +315,7 @@ input[name="controls"] {display: none;}
             </div>
     </div>
     <!-- Controladores del tiempo -->
-    <div id="timer_controls" style="position:relative;left:40px"><br>
+    <div id="timer_controls" style="position:relative;left:0px"><br>
             <label for="start">Iniciar</label>
             <label for="stop">Detener</label>
             <label for="reset">Reiniciar</label>
@@ -316,7 +327,11 @@ input[name="controls"] {display: none;}
 
 
 <footer>
-Copyright
+    <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x" style="color:purple"></i>
+            <i class="fa fa-area-chart fa-stack-1x" style="color:white"></i>
+        </span>
+        Ayuda a tu estrategia de estudio
 </footer>
     
 <!--Muestra caracteristicas sobre el grafico -->
@@ -331,7 +346,5 @@ $( "#progressbar" ).progressbar({
 </script>
 
 <!--Scrip para enviar mails de recordatorio -->
-
-
 </body>
 </html>

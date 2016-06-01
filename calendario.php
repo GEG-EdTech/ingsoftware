@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!--Para mostrar awesomefonts -->
+    <script src="https://use.fontawesome.com/5ab0d2bdb4.js"></script>
 <meta charset="utf-8" />
 <title>Calendario</title>
 <link rel="stylesheet"
@@ -237,7 +239,13 @@ body {
 }
 </style>
 <head></head>
-<body>
+<body>  
+    <h2>
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x" style="color:red"></i>
+        <i class="fa fa-calendar-check-o fa-stack-1x" style="color:white"></i>
+    </span>
+        Calendario</h2>
 	<!-- podemos ver el counter #time y el calendario en sus div -->
 	<div id='time'></div>
 	<br>

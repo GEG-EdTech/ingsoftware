@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Registro</title>
     <link rel="stylesheet" href="css/style.css" />
+    <script src="https://use.fontawesome.com/5ab0d2bdb4.js"></script>
 <style>
 header {
     background-color:black;
@@ -67,11 +68,21 @@ footer {
 ?>
 <div class="form">
 <h1>Registro</h1>
+
 <form name="registration" action="" method="post">
-<input type="text" name="username" placeholder="Nombre" required />
-<input type="email" name="email" placeholder="Email" required />
-<input type="password" name="password" placeholder="Clave" required />
-<input type="submit" name="submit" value="Registrar" />
+    <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-user  fa-fw" aria-hidden="true"></i></span>
+            <input class="form-control" type="text" name="username" placeholder="Nombre" required />
+    </div>
+    <div class="input-group margin-bottom-sm">
+        <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i></span>
+            <input class="form-control" type="email" name="email" placeholder="Email" required />
+    </div>
+    <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-key fa-fw" aria-hidden="true"></i></span>
+            <input class="form-control" type="password" name="password" placeholder="Clave" required />
+    </div>
+    <input type="submit" name="submit" value="Registrar" />
 </form>
 <p>¿Ya estas registrado? <a href='login.php'>Ingresa aqui!</a></p>
 </div>
@@ -83,7 +94,11 @@ footer {
 </aside>
 
 <footer>
-Copyright
+<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x" style="color:purple"></i>
+            <i class="fa fa-area-chart fa-stack-1x" style="color:white"></i>
+        </span>
+        Ayuda a tu estrategia de estudio
 </footer>
 
 </body>

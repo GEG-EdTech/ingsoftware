@@ -11,7 +11,8 @@ include("auth.php"); //incluir auth.php en todas las paginas seguras?>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="css/style.css" />
     <link href="jquery-ui.css" rel="stylesheet">
-
+    <!--Para mostrar awesomefonts -->
+    <script src="https://use.fontawesome.com/5ab0d2bdb4.js"></script>
 <!--Informacion sobre la pagina-->
 <style>
 header {
@@ -23,7 +24,7 @@ header {
 nav {
     line-height:30px;
     background-color:#eeeeee;
-    height:300px;
+    height:340px;
     width:230px;
     float:left;
     padding:5px;	      
@@ -258,12 +259,16 @@ input[name="controls"] {display: none;}
 
 <nav>
     <!-- Cerrar cuenta -->
-        <a href="logout.php">Cerrar Sesión</a>
+    <a class="btn btn-danger" href="logout.php">
+        <i class="fa fa-user-times fa-lg"></i> Cerrar Sesión</a>
     <br>
+    <!--Vuelve al menu principal-->
+    <a class="btn btn-danger" href="index.php">
+        <i class="fa fa-home fa-lg"></i> Inicio</a>
+    <br>
+    <!--Mostrar todos los ramos del alumno-->
     <form method="POST" action="dashboard.php">
-        
         <?php
-        
          if(!$link){
             echo 'Error en la consulta';
         }
@@ -287,41 +292,41 @@ input[name="controls"] {display: none;}
             echo"Error";
         }
         echo'Nombre Ramo: <select name="ramo" >';
-        while($row= mysqli_fetch_array($result))
-                { 
-        foreach ($row as $key=>$dato)
-            
-            {if($key=='name')
-            {
-                echo '<option value= "'.$dato.'"> '.$dato. '</option>';
+        while($row= mysqli_fetch_array($result)){ 
+            foreach ($row as $key=>$dato){
+                if($key=='name'){
+                    echo '<option value= "'.$dato.'"> '.$dato. '</option>';
+                }
             }
-            }
-                 }
-            echo'</select> <br>';
         }
-        ?>
+            echo'</select> <br>';
+        }?>
         <input type="submit" value="Seleccionar">
-         </form><br>
+        </form><br>
     
     <!--Ingresar nuevo ramo a la BBDD del alumno-->
-    <h3>Ingresar Nuevo Ramo</h3>
+    <h4>Ingresar Nuevo Ramo</h4>
     <form method="POST" action="agregarramo.php">
     Nombre Ramo: <input type="text" name="nombreramo"><br>
     <input type="submit" value="Guardar">
     </form>
-
-
 </nav>
 
 <section>
 <br>
 <!--Se muestra el nombre del ramo seleccionado-->
+<h2>
+    <span class="fa-stack fa-lg">
+        <i class="fa fa-circle fa-stack-2x" style="color:orange"></i>
+        <i class="fa fa-pencil fa-stack-1x" style="color:white"></i>
+    </span> 
 <?php
     $nombreRamo=$_POST['ramo'];
                 $nombreRamo = stripslashes($nombreRamo);
 		$nombreRamo = mysql_real_escape_string($nombreRamo);
-    echo "<h2>".$nombreRamo."</h2>";
+    echo $nombreRamo;
 ?>
+</h2>
 <br>
 
 <!--Mostrar el slider de la dificultad-->
@@ -455,20 +460,23 @@ input[name="controls"] {display: none;}
        <input type="submit" value="Eliminar">
     </form><br>
 
-<!--Vuelve al menu principal-->
-<h4><a href="index.php">Inicio</a></h4>
-
 </section>
  
 <aside>
     <!--Calendario-->
     <div>
-        <iframe src="http://localhost/ingsoftware/calendario.php" width="41%" height="500" frameBorder="0" scrolling="no">
+        <iframe src="http://localhost/ingsoftware/calendario.php" width="41%" height="580" frameBorder="0" scrolling="no">
         </iframe>
     </div>
     
     <!--Tiempo de estudio-->
-    <div style="position:relative;left:150px"><br><br>
+    <h2>
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x" style="color:blue"></i>
+            <i class="fa fa-clock-o fa-stack-1x" style="color:white"></i>
+        </span>
+        Temporizador</h2>
+    <div style="position:relative;left:0px"><br><br>
     <input id="start" name="controls" type="radio" />
     <input id="stop" name="controls" type="radio" />
     <input id="reset" name="controls" type="radio" />
@@ -505,7 +513,7 @@ input[name="controls"] {display: none;}
             </div>
     </div>
     <!-- Controladores del tiempo -->
-    <div id="timer_controls" style="position:relative;left:40px"><br>
+    <div id="timer_controls" style="position:relative;left:0px"><br>
             <label for="start">Iniciar</label>
             <label for="stop">Detener</label>
             <label for="reset">Reiniciar</label>
@@ -516,7 +524,12 @@ input[name="controls"] {display: none;}
 
 
 <footer>
-Copyright
+        
+    <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x" style="color:purple"></i>
+            <i class="fa fa-area-chart fa-stack-1x" style="color:white"></i>
+        </span>
+        Ayuda a tu estrategia de estudio
 </footer>
 
 <!--Muestra caracteristicas sobre el grafico -->
